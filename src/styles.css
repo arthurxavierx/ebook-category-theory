@@ -1,0 +1,9 @@
+body {
+  text-align: justify;
+  font-size: 0.9em;
+}
+
+figure,
+img {
+  text-align: center;
+}
