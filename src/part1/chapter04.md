@@ -329,5 +329,7 @@ optional<double> safe_root(double x) {
 Here's the challenge:
 
 1. Construct the Kleisli category for partial functions (define composition and identity).
+
 2. Implement the embellished function `safe_reciprocal` that returns a valid reciprocal of its argument, if it's different from zero.
+
 3. Compose `safe_root` and `safe_reciprocal` to implement `safe_root_reciprocal` that calculates $\sqrt{x^{-1}}$ whenever possible.
