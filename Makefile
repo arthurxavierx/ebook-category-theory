@@ -1,5 +1,5 @@
 PANDOC = pandoc
-PFLAGS = --toc --number-sections --smart --listings --latex-engine=xelatex --epub-stylesheet=$(STYLESHEET)
+PFLAGS = --toc --toc-depth=2 --number-sections --smart --listings --latex-engine=xelatex --epub-stylesheet=$(STYLESHEET)
 PVARS  = -V fontsize=12pt -V geometry="a4paper" -V documentclass=book
 
 SRC = src
