@@ -9,7 +9,7 @@ Let's have a closer look at product and sum types as they appear in programming.
 The canonical implementation of a product of two types in a programming language is a pair. In Haskell, a pair is a primitive type constructor; in C++ it's a relatively complex template defined in the Standard Library.
 
 ## Pair
-![A pair](./img/part1_chapter06.jpg)
+![A pair](./img/chapter06.jpg)
 
 Pairs are not strictly commutative: a pair `(Int, Bool)` cannot be substituted for a pair `(Bool, Int)`, even though they carry the same information. They are, however, commutative up to isomorphism -- the isomorphism being given by the swap function (which is its own inverse):
 

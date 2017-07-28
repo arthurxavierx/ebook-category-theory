@@ -15,7 +15,7 @@ The simplest shape is a single object. Obviously, there are as many instances of
 Definition 5.1
 : The _initial object_ is the object that has one and only one morphism going to any object in the category.
 
-![An initial pig, which happens to be considered an initial object, despite being, in fact, an initial animal.](./img/part1_chapter05_1.jpg){ width=50% }
+![An initial pig, which happens to be considered an initial object, despite being, in fact, an initial animal.](./img/chapter05_1.jpg){ width=50% }
 
 However, even that doesn't guarantee the uniqueness of the initial object (if one exists). But it guarantees the next best thing: uniqueness up to _isomorphism_. Isomorphisms are very important in category theory, so I'll talk about them shortly. For now, let's just agree that uniqueness up to isomorphism justifies the use of "the" in the definition of the initial object.
 
@@ -36,7 +36,7 @@ Let's continue with the single-object pattern, but let's change the way we rank 
 Definition 5.2
 : The _terminal object_ is the object with one and only one morphism coming to it from any object in the category.
 
-![The terminal object with only one incoming morphism from every object in the category](./img/part1_chapter05_2.jpg){ width=50% }
+![The terminal object with only one incoming morphism from every object in the category](./img/chapter05_2.jpg){ width=50% }
 
 And again, the terminal object is unique, up to isomorphism, which I will show shortly. But first let's look at some examples. In a poset, the terminal object, if it exists, is the biggest object. In the category of sets, the terminal object is a singleton. We've already talked about singletons -- they correspond to the `void` type in C++ and the unit type `()` in Haskell. It's a type that has only one value -- implicit in C++ and explicit in Haskell, denoted by (). We've also established that there is one and only one pure function from any type to the unit type:
 
@@ -86,7 +86,7 @@ g . f = id
 
 When I said that the initial (terminal) object was unique up to isomorphism, I meant that any two initial (terminal) objects are isomorphic. That's actually easy to see. Let's suppose that we have two initial objects $i_1$ and $i_2$. Since $i_1$ is initial, there is a unique morphism $f$ from $i_1$ to $i_2$. By the same token, since $i_2$ is initial, there is a unique morphism $g$ from $i_2$ to $i_1$. What's the composition of these two morphisms?
 
-![All morphisms in this diagram are unique](./img/part1_chapter05_3.jpg){ width=60% }
+![All morphisms in this diagram are unique](./img/chapter05_3.jpg){ width=60% }
 
 The composition $g \circ f$ must be a morphism from $i_1$ to $i_1$. But $i_1$ is initial so there can only be one morphism going from $i_1$ to $i_1$. Since we are in a category, we know that there is an identity morphism from $i_1$ to $i_1$, and since there is room for only one, that must be it. Therefore $g \circ f$ is equal to identity. Similarly, $f \circ g$ must be equal to identity, because there can be only one morphism from $i_2$ back to $i_2$. This proves that $f$ and $g$ must be the inverse of each other. Therefore any two initial objects are isomorphic.
 
@@ -133,11 +133,11 @@ p :: c -> a
 q :: c -> b
 ```
 
-![](./img/part1_chapter05_4.jpg){ width=60% }
+![](./img/chapter05_4.jpg){ width=60% }
 
 All $cs$ that fit this pattern will be considered candidates for the product. There may be lots of them.
 
-![](./img/part1_chapter05_5.jpg){ width=60% }
+![](./img/chapter05_5.jpg){ width=60% }
 
 For instance, let's pick, as our constituents, two Haskell types, `Int` and `Bool`, and get a sampling of candidates for their product.
 
@@ -174,13 +174,13 @@ p' = p . m
 q' = q . m
 ```
 
-![](./img/part1_chapter05_6.jpg){ width=72% }
+![](./img/chapter05_6.jpg){ width=72% }
 
 Another way of looking at these equation is that $m$ _factorizes_ $p'$ and $q'$. Just pretend that these equations are in natural numbers, and the dot is multiplication: $m$ is a common factor shared by $p'$ and $q'$.
 
 Just to build some intuitions, let me show you that the pair `(Int, Bool)` with the two canonical projections, `fst` and `snd` is indeed better than the two candidates I presented before.
 
-![Not a product](./img/part1_chapter05_7.jpg){ width=72% }
+![Not a product](./img/chapter05_7.jpg){ width=72% }
 
 The mapping `m` for the first candidate is:
 
@@ -255,7 +255,7 @@ i :: a -> c
 j :: b -> c
 ```
 
-![](./img/part1_chapter05_8.jpg)
+![](./img/chapter05_8.jpg)
 
 The ranking is also inverted: object $c$ is "better" than object $c'$ that is equipped with the injections $i'$ and $j'$ if there is a morphism $m$ from $c$ to $c'$ that factorizes the injections:
 
@@ -264,7 +264,7 @@ i' = m . i
 j' = m . j
 ```
 
-![](./img/part1_chapter05_9.jpg)
+![](./img/chapter05_9.jpg)
 
 The "best" such object, one with a unique morphism connecting it to any other pattern, is called a coproduct and, if it exists, is unique up to unique isomorphism.
 

@@ -5,10 +5,10 @@ PVARS  = -V fontsize=12pt -V geometry="a4paper" -V documentclass=book
 SRC = src
 PREAMBLE = $(SRC)/preamble.tex
 STYLESHEET = $(SRC)/styles.css
-CHAPTERS = $(wildcard $(SRC)/part*/*.md)
+CHAPTERS = $(wildcard $(SRC)/chapter*.md)
 export CHAPTERS
 
-SOURCES = $(wildcard $(SRC)/*.md) $(CHAPTERS)
+SOURCES = $(SRC)/headers.md $(CHAPTERS)
 
 #
 all: ctfp.epub ctfp.pdf

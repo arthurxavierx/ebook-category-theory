@@ -148,13 +148,13 @@ An astute reader might have noticed that the mapping from integers to adders fol
 
 Now I want you to forget that you are dealing with the set of natural numbers and just think of it as a single object, a blob with a bunch of morphisms -- the adders. A monoid is a single object category. In fact the name monoid comes from Greek _mono_, which means single. Every monoid can be described as a single object category with a set of morphisms that follow appropriate rules of composition.
 
-![](./img/part1_chapter03_1.jpg)
+![](./img/chapter03_1.jpg)
 
 String concatenation is an interesting case, because we have a choice of defining right appenders and left appenders (or _prependers_, if you will). The composition tables of the two models are a mirror reverse of each other. You can easily convince yourself that appending "bar" after "foo" corresponds to prepending "foo" after prepending "bar".
 
 You might ask the question whether every categorical monoid -- a one-object category -- defines a unique set-with-binary-operator monoid. It turns out that we can always extract a set from a single-object category. This set is the set of morphisms -- the adders in our example. In other words, we have the hom-set $M(m, m)$ of the single object $m$ in the category $M$. We can easily define a binary operator in this set: The monoidal product of two set-elements is the element corresponding to the composition of the corresponding morphisms. If you give me two elements of $M(m, m)$ corresponding to $f$ and $g$, their product will correspond to the composition $g \circ f$. The composition always exists, because the source and the target for these morphisms are the same object. And it's associative by the rules of category. The identity morphism is the neutral element of this product. So we can always recover a set monoid from a category monoid. For all intents and purposes they are one and the same.
 
-![Monoid hom-set seen as morphisms and as points in a set](./img/part1_chapter03_2.jpg)
+![Monoid hom-set seen as morphisms and as points in a set](./img/chapter03_2.jpg)
 
 There is just one little nit for mathematicians to pick: morphisms don't have to form a set. In the world of categories there are things larger than sets. A category in which morphisms between any two objects form a set is called locally small. As promised, I will be mostly ignoring such subtleties, but I thought I should mention them for the record.
 
