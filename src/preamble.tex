@@ -7,9 +7,9 @@
 
 \arrayrulecolor{white}
 
-\lstset{
+\lstset{%
   basicstyle=\ttfamily,
-  backgroundcolor=\color{black!4},
+  backgroundcolor=\color{black!10},
   showspaces=false,
   showstringspaces=false,
   showtabs=false,
@@ -26,3 +26,22 @@
 
 \captionsetup{width=.8\textwidth}
 \interfootnotelinepenalty=10000
+
+%
+\usepackage[shortlabels]{enumitem}
+\setlist[description]{%
+  topsep=12pt,
+  labelindent=0pt,
+  labelsep=0pt,
+  itemindent=0pt,
+  itemsep=12pt,
+  leftmargin=0pt
+}
+
+% Put a dot after description labels
+\renewcommand{\descriptionlabel}[1]{%
+  \hspace\labelsep \upshape\textbf{#1}.
+}
+
+% Get rid of the explicit \itemsep declaration in Pandoc's \tightlist command
+\providecommand{\tightlist}{\setlength{\parskip}{0pt}}

@@ -12,8 +12,8 @@ This process is reminiscent of the way we do web searches. A query is like a pat
 
 The simplest shape is a single object. Obviously, there are as many instances of this shape as there are objects in a given category. That's a lot to choose from. We need to establish some kind of ranking and try to find the object that tops this hierarchy. The only means at our disposal are morphisms. If you think of morphisms as arrows, then it's possible that there is an overall net flow of arrows from one end of the category to another. This is true in ordered categories, for instance in partial orders. We could generalize that notion of object precedence by saying that object $a$ is "more initial" than object $b$ if there is an arrow (a morphism) going from $a$ to $b$. We would then define the initial object as one that has arrows going to all other objects. Obviously there is no guarantee that such an object exists, and that's okay. A bigger problem is that there may be too many such objects: The recall is good, but precision is lacking. The solution is to take a hint from ordered categories -- they allow at most one arrow between any two objects: there is only one way of being less-than or equal-to another object. Which leads us to this definition of the initial object:
 
-Initial object
-:   The **initial object** is the object that has one and only one morphism going to any object in the category.
+Definition 5.1
+: The _initial object_ is the object that has one and only one morphism going to any object in the category.
 
 ![An initial pig, which happens to be considered an initial object, despite being, in fact, an initial animal.](./img/part1_chapter05_1.jpg){ width=50% }
 
@@ -33,10 +33,10 @@ It's this family of morphisms that makes `Void` the initial object in the catego
 
 Let's continue with the single-object pattern, but let's change the way we rank the objects. We'll say that object $a$ is "more terminal" than object $b$ if there is a morphism going from `b` to `a` (notice the reversal of direction). We'll be looking for an object that's more terminal than any other object in the category. Again, we will insist on uniqueness:
 
-Terminal object
-:   The **terminal object** is the object with one and only one morphism coming to it from any object in the category.
+Definition 5.2
+: The _terminal object_ is the object with one and only one morphism coming to it from any object in the category.
 
-![](./img/part1_chapter05_2.jpg){ width=50% }
+![The terminal object with only one incoming morphism from every object in the category](./img/part1_chapter05_2.jpg){ width=50% }
 
 And again, the terminal object is unique, up to isomorphism, which I will show shortly. But first let's look at some examples. In a poset, the terminal object, if it exists, is the biggest object. In the category of sets, the terminal object is a singleton. We've already talked about singletons -- they correspond to the `void` type in C++ and the unit type `()` in Haskell. It's a type that has only one value -- implicit in C++ and explicit in Haskell, denoted by (). We've also established that there is one and only one pure function from any type to the unit type:
 
@@ -86,7 +86,7 @@ g . f = id
 
 When I said that the initial (terminal) object was unique up to isomorphism, I meant that any two initial (terminal) objects are isomorphic. That's actually easy to see. Let's suppose that we have two initial objects $i_1$ and $i_2$. Since $i_1$ is initial, there is a unique morphism $f$ from $i_1$ to $i_2$. By the same token, since $i_2$ is initial, there is a unique morphism $g$ from $i_2$ to $i_1$. What's the composition of these two morphisms?
 
-![All morphisms in this diagram are unique](./img/part1_chapter05_3.jpg)
+![All morphisms in this diagram are unique](./img/part1_chapter05_3.jpg){ width=60% }
 
 The composition $g \circ f$ must be a morphism from $i_1$ to $i_1$. But $i_1$ is initial so there can only be one morphism going from $i_1$ to $i_1$. Since we are in a category, we know that there is an identity morphism from $i_1$ to $i_1$, and since there is room for only one, that must be it. Therefore $g \circ f$ is equal to identity. Similarly, $f \circ g$ must be equal to identity, because there can be only one morphism from $i_2$ back to $i_2$. This proves that $f$ and $g$ must be the inverse of each other. Therefore any two initial objects are isomorphic.
 
@@ -133,11 +133,11 @@ p :: c -> a
 q :: c -> b
 ```
 
-![](./img/part1_chapter05_4.jpg)
+![](./img/part1_chapter05_4.jpg){ width=60% }
 
 All $cs$ that fit this pattern will be considered candidates for the product. There may be lots of them.
 
-![](./img/part1_chapter05_5.jpg)
+![](./img/part1_chapter05_5.jpg){ width=60% }
 
 For instance, let's pick, as our constituents, two Haskell types, `Int` and `Bool`, and get a sampling of candidates for their product.
 
@@ -167,18 +167,20 @@ You may have noticed that while our first candidate was too small -- it only cov
 
 But we haven't explored yet the other part of the universal construction: the ranking. We want to be able to compare two instances of our pattern. We want to compare one candidate object $c$ and its two projections $p$ and $q$ with another candidate object $c'$ and its two projections $p'$ and $q'$. We would like to say that $c$ is "better" than $c'$ if there is a morphism $m$ from $c'$ to $c$ -- but that's too weak. We also want its projections to be "better," or "more universal," than the projections of $c'$. What it means is that the projections $p'$ and $q'$ can be reconstructed from $p$ and $q$ using $m$:
 
+\newpage
+
 ```haskell
 p' = p . m
 q' = q . m
 ```
 
-![](./img/part1_chapter05_6.jpg)
+![](./img/part1_chapter05_6.jpg){ width=72% }
 
 Another way of looking at these equation is that $m$ _factorizes_ $p'$ and $q'$. Just pretend that these equations are in natural numbers, and the dot is multiplication: $m$ is a common factor shared by $p'$ and $q'$.
 
 Just to build some intuitions, let me show you that the pair `(Int, Bool)` with the two canonical projections, `fst` and `snd` is indeed better than the two candidates I presented before.
 
-![Not a product](./img/part1_chapter05_7.jpg)
+![Not a product](./img/part1_chapter05_7.jpg){ width=72% }
 
 The mapping `m` for the first candidate is:
 
@@ -234,8 +236,8 @@ That makes the cartesian product `(a, b)` our best match, which means that this 
 
 Now let's forget about sets and define a product of two objects in any category using the same universal construction. Such product doesn't always exist, but when it does, it is unique up to a unique isomorphism.
 
-Product
-:   A **product** of two objects $a$ and $b$ is the object $c$ equipped with two projections such that for any other object $c'$ equipped with two projections there is a unique morphism $m$ from $c'$ to $c$ that factorizes those projections.
+Definition 5.3
+: A _product_ of two objects $a$ and $b$ is the object $c$ equipped with two projections such that for any other object $c'$ equipped with two projections there is a unique morphism $m$ from $c'$ to $c$ that factorizes those projections.
 
 A (higher order) function that produces the factorizing function `m` from two candidates is sometimes called the _factorizer_. In our case, it would be the function:
 
@@ -266,8 +268,8 @@ j' = m . j
 
 The "best" such object, one with a unique morphism connecting it to any other pattern, is called a coproduct and, if it exists, is unique up to unique isomorphism.
 
-Coproduct
-:   A **coproduct** of two objects $a$ and $b$ is the object $c$ equipped with two injections such that for any other object $c'$ equipped with two injections there is a unique morphism $m$ from $c$ to $c'$ that factorizes those injections.
+Definition 5.4
+: A _coproduct_ of two objects $a$ and $b$ is the object $c$ equipped with two injections such that for any other object $c'$ equipped with two injections there is a unique morphism $m$ from $c$ to $c'$ that factorizes those injections.
 
 In the category of sets, the coproduct is the _disjoint union_ of two sets. An element of the disjoint union of $a$ and $b$ is either an element of $a$ or an element of $b$. If the two sets overlap, the disjoint union contains two copies of the common part. You can think of an element of a disjoint union as being tagged with an identifier that specifies its origin.
 
